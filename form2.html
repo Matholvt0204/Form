@@ -6,11 +6,17 @@
 	<title>Formulario simples </title>
 
 	<script>
-
+		
+		//Starting variables
+		
 		var array = [];
 		var i = 0;
-
+		
+		//Starting the function that will be send the data and validate some conditions
+		
 		function send() {
+			
+			//Starting local variables 
 			var form = document.forms["cad"]
 			var nick = form.name.value
 			var passwd = form.passwd.value
@@ -19,8 +25,9 @@
 			var sexo2 = document.getElementById('Msex').checked
 			var regExp = /([a-zA-z]+\d+)+|\d+[a-zA-Z]+/
 			var er = /\s+/
-					
-			var erro = false			//não tem erro
+			
+			//Starting the validation
+			var erro = false			
 			if(nick.length <= 6) {
 				alert("Preencha o nick")
 				erro = true
@@ -43,7 +50,8 @@
 				alert("Selecione um sexo")
 				erro = true
 			}
-
+			
+			//Starting the object that will contain the Nick and Password
 			var o = {
 				oname: nick,
 				opasswd: passwd
@@ -51,6 +59,7 @@
 
 			if(!erro) {
 				
+				//Push the Object into the array 
 				array.push(o)
 
 				for (i >= 0; i < array.length; i++) {
