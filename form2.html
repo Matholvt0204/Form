@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Página do seu nome </title>
+
+	<!-- <script>	
+		
+		function send() {
+			var nick = document.getElementById('nomeid').value
+			var passwd = document.getElementById('pwdid').value;
+			var conf = document.getElementById('confid').value;
+
+			if(nick.length <= 6) {
+				alert(nick.length);
+			}
+
+		};
+		var nome = prompt('Digite seu nome: ');
+		alert(nome + ' seja bem vindo');
+		
+	</script> -->
+
+	<script>
+
+		var array = [];
+		var i = 0;
+
+		function send() {
+			var form = document.forms["cad"]
+			var nick = form.name.value
+			var passwd = form.passwd.value
+			var confpwd = form.confpwd.value
+			var sexo1 = document.getElementById('Fsex').checked
+			var sexo2 = document.getElementById('Msex').checked
+			var regExp = /([a-zA-z]+\d+)+|\d+[a-zA-Z]+/
+			var er = /\s+/
+					
+			var erro = false			//não tem erro
+			if(nick.length <= 6) {
+				alert("Preencha o nick")
+				erro = true
+			}	
+			if(er.test(nick) == true) {
+				alert("O nick não deve conter espaços")
+				erro = true
+			}
+			if(passwd != confpwd) {
+				alert("As senhas não correspondem")
+				erro = true
+			}
+
+			if(regExp.test(passwd) == false) {
+				alert("Insira pelo menos um numero e uma letra")
+				erro = true
+			} 
+
+			if((sexo1 == "") && (sexo2 == "")) {
+				alert("Selecione um sexo")
+				erro = true
+			}
+
+			var o = {
+				oname: nick,
+				opasswd: passwd
+			}
+
+			if(!erro) {
+				
+				array.push(o)
+
+				for (i >= 0; i < array.length; i++) {
+					console.log(array[i].oname);
+					//element.innerHTML(array[i].oname)
+				}
+				
+			}
+
+			return  false; 	
+		
+		}
+
+	</script>
+</head>
+
+<body>
+	<a href="https://www.google.com" target="_blank">Google</a><br>
+	
+	<form method="post" id="cad" onsubmit="return send()">
+		<fieldset id="cadastro">
+
+			<p><label for="nomeid">Nick: <input type="text" name="name" id="nomeid" size="30" minlength="6"/> </p>
+			<p><label for="pwdid">Senha:<input type="password" name="passwd" id="pwdid" size="30"/> </p>	
+			<p><label for="confid">Confirmação de senha: <input type="password" name="confpwd" id="confid" size="30" /></p>
+		  		
+			<input type="radio" name="sex" id=Fsex /><label for="Fsex">Feminino</label>
+			<input type="radio" name="sex" id=Msex /><label for="Msex">Masculino</label><br>
+			
+			<input type="submit" name='salvar' value="Enviar"/>
+
+
+		</fieldset>
+	
+
+	</form>
+
+	<table id="tabela">
+		<tbody>
+			<tr>
+				<td><script>
+					//var nick2 = document.getElementById("nomeid").value;
+					
+				</script></td>
+			</tr>
+		
+		</tbody>
+	
+	</table>
+</body>
+
+</html>	
